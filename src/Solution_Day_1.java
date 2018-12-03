@@ -9,8 +9,6 @@ public class Solution_Day_1 {
 
     public String part1(){
         int number = 0;
-        List<Integer> frequency = new ArrayList<>();
-
         List<String> numbersToAnalyse = new ArrayList<>(Arrays.asList(numbers.split("\n")));
 
         for(String s : numbersToAnalyse){
