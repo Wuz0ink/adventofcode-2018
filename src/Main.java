@@ -11,6 +11,8 @@ public class Main {
 
         System.out.println(day2.part1());
 
+        System.out.println(day2.part2());
+
 
 
     }

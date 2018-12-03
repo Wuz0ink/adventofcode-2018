@@ -39,6 +39,41 @@ public class Solution_Day_2 {
         return "Two: " + twoTimer + " * Three: " + threeTimer + " = " + twoTimer * threeTimer;
     }
 
+    public String part2(){
+        List<String> idsToAnalyse = new ArrayList<>(Arrays.asList(boxId.split("\n")));
+        String answer = "";
+
+        for(int iterator = 0; iterator < idsToAnalyse.size();iterator++){
+            String temp = idsToAnalyse.get(0);
+            idsToAnalyse.remove(0);
+            char[] firstCharList = temp.toCharArray();
+
+            for(String secondId : idsToAnalyse){
+                int differ = 0;
+                char[] secondCharList = secondId.toCharArray();
+
+                for(int i = 0; i < firstCharList.length; i++){
+                    if(firstCharList[i] != secondCharList[i]){
+                        differ++;
+                    }
+                }
+                 if(differ == 1){
+                     for(int t = 0; t < 26; t++){
+                         if(firstCharList[t] == secondCharList[t]){
+                             answer += firstCharList[t];
+                         }
+                     }
+                 }
+
+            }
+        }
+
+
+
+
+        return answer;
+    }
+
     static String boxId = "dghfbsyiznoumojleevappwqtr\n" +
             "dghfbsyiznoumkjljevacpmqer\n" +
             "dghfbbyizioumkjlxevacpwdtr\n" +
