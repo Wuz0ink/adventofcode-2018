@@ -2,10 +2,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Solution_1 {
+public class Solution_Day_1 {
 
-    public static String problem_1(){
+
+
+
+    public String part1(){
         int number = 0;
+        List<Integer> frequency = new ArrayList<>();
 
         List<String> numbersToAnalyse = new ArrayList<>(Arrays.asList(numbers.split("\n")));
 
@@ -16,9 +20,43 @@ public class Solution_1 {
             }else{
                 number -= -currentNumber;
             }
+        }
+
+        return "The answer is: " + number;
+    }
+
+    public String part2(){
+        int number = 0;
+        List<Integer> frequency = new ArrayList<>();
+        frequency.add(0);
+        int dublicateNumber;
+        List<String> numbersToAnalyse = new ArrayList<>(Arrays.asList(numbers.split("\n")));
+
+        outerloop:
+        while(true) {
+
+            for (String s : numbersToAnalyse) {
+                int currentNumber = Integer.parseInt(s);
+                if (currentNumber > 0) {
+                    number += currentNumber;
+                } else {
+                    number -= -currentNumber;
+                }
+
+
+                if (frequency.contains(number)) {
+                    dublicateNumber = number;
+                    break outerloop;
+                } else {
+                    frequency.add(number);
+                }
+            }
 
         }
-        return "The answer is: " + number;
+
+        return "The first dublicate is: " + dublicateNumber;
+
+
     }
 
 
