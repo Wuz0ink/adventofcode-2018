@@ -3,6 +3,7 @@ import java.util.*;
 public class Solution_Day_3 {
 
     private HashMap<String, Integer> fabric;
+    private HashMap<Integer, String[]> claimsMap;
     List<String> claimsToAnalyse;
 
     public Solution_Day_3(){
@@ -49,6 +50,64 @@ public class Solution_Day_3 {
             }
         }
         return inchesClaimedMoreThanOnce;
+    }
+
+    public String part2(){
+        claimsMap = new HashMap<>();
+
+        for(String data: claimsToAnalyse){
+            claimsMap.put(Integer.parseInt(data.substring(data.indexOf("#") + 1, data.indexOf("@")).trim()), getCoordinates(data.substring(data.indexOf("@")+1)));
+        }
+
+        Set set = claimsMap.entrySet();
+        Iterator iterator = set.iterator();
+        int id = 0;
+
+        while(iterator.hasNext()){
+            Map.Entry claims = (Map.Entry)iterator.next();
+            id = (Integer) claims.getKey();
+
+            Boolean found = findTheOne((String[]) claims.getValue());
+            if(found){
+                break;
+            }else{
+                id = 0;
+            }
+        }
+
+        if(id == 0){
+            return "ID was not found!";
+        }
+
+        return "ID: " + id + " is the claim that doesn't overlap!";
+    }
+
+    public boolean findTheOne(String [] claim){
+        Boolean found = true;
+
+        for(String s : claim){
+            int i = fabric.get(s);
+            if(i == 2){
+                return false;
+            }
+        }
+        return found;
+    }
+
+    public String[] getCoordinates(String data){
+        int leftEdge = Integer.parseInt(data.substring(0, data.indexOf(",")).trim());
+        int topEdge = Integer.parseInt(data.substring(data.indexOf(",") + 1, data.indexOf(":")).trim());
+        int wide = Integer.parseInt(data.substring(data.indexOf(":") + 1, data.indexOf("x")).trim());
+        int tall = Integer.parseInt(data.substring(data.indexOf("x") + 1).trim());
+
+        List<String> temp = new ArrayList<>();
+        for(int i = leftEdge; i < leftEdge+wide; i++){
+            for(int j = topEdge; j < topEdge+tall; j++){
+                temp.add(i + "." + j);
+            }
+        }
+
+        return temp.toArray(new String[0]);
     }
 
 
