@@ -4,6 +4,7 @@ public class Main {
 
         Solution_Day_1 day1 = new Solution_Day_1();
         Solution_Day_2 day2 = new Solution_Day_2();
+        Solution_Day_3 day3 = new Solution_Day_3();
 
         System.out.println(day1.part1());
 
@@ -12,6 +13,8 @@ public class Main {
         System.out.println(day2.part1());
 
         System.out.println(day2.part2());
+
+        System.out.println(day3.part1());
 
 
 
