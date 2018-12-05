@@ -1,3 +1,7 @@
+package solutions;
+
+import classes.GuardEvents;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;

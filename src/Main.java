@@ -1,3 +1,5 @@
+import solutions.*;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -6,6 +8,8 @@ public class Main {
         Solution_Day_2 day2 = new Solution_Day_2();
         Solution_Day_3 day3 = new Solution_Day_3();
         Solution_Day_4 day4 = new Solution_Day_4();
+        Solution_Day_5 day5 = new Solution_Day_5();
+
 
 //        System.out.println(day1.part1());
 //
@@ -18,10 +22,14 @@ public class Main {
 //        System.out.println(day3.part1());
 //
 //        System.out.println(day3.part2());
+//
+//        System.out.println(day4.part1());
+//
+//        System.out.println(day4.part2());
 
-        System.out.println(day4.part1());
+        System.out.println(day5.part1());
 
-        System.out.println(day4.part2());
+
 
 
 
