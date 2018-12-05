@@ -4,7 +4,7 @@ public class Solution_Day_3 {
 
     private HashMap<String, Integer> fabric;
     private HashMap<Integer, String[]> claimsMap;
-    List<String> claimsToAnalyse;
+    private List<String> claimsToAnalyse;
 
     public Solution_Day_3(){
         claimsToAnalyse = new ArrayList<>(Arrays.asList(claims.split("\n")));
