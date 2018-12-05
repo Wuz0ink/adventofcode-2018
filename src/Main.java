@@ -11,23 +11,25 @@ public class Main {
         Solution_Day_5 day5 = new Solution_Day_5();
 
 
-//        System.out.println(day1.part1());
-//
-//        System.out.println(day1.part2());
-//
-//        System.out.println(day2.part1());
-//
-//        System.out.println(day2.part2());
-//
-//        System.out.println(day3.part1());
-//
-//        System.out.println(day3.part2());
-//
-//        System.out.println(day4.part1());
-//
-//        System.out.println(day4.part2());
+        System.out.println(day1.part1());
 
-        System.out.println(day5.part1());
+        System.out.println(day1.part2());
+
+        System.out.println(day2.part1());
+
+        System.out.println(day2.part2());
+
+        System.out.println(day3.part1());
+
+        System.out.println(day3.part2());
+
+        System.out.println(day4.part1());
+
+        System.out.println(day4.part2());
+
+        System.out.println("Answer: " + day5.part1());
+
+        System.out.println("Answer: " + day5.part2());
 
 
 

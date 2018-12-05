@@ -17,7 +17,7 @@ public class Solution_Day_5 {
         }
     }
 
-    public String part1(){
+    public int part1(){
             for (int i = 0; i < data.length() - 1; i++) {
                 char c1 = data.charAt(i);
                 char c2 = data.charAt(i + 1);
@@ -31,7 +31,28 @@ public class Solution_Day_5 {
                     }
                 }
             }
-        return "Answer: " + data.length();
+        return data.length();
+    }
+
+    public int part2(){
+
+        String temp = "Aa:Bb:Cc:Dd:Ee:Ff:Gg:Hh:Ii:Jj:Kk:Ll:Mm:Nn:Oo:Pp:Qq:Rr:Ss:Tt:Uu:Vv:Ww:Xx:Yy:Zz";
+        String[] alphabet = temp.split(":");
+
+        String originData = data;
+
+        int shortestText = 50000;
+
+        for(String s : alphabet){
+            data = originData;
+            data = data.replaceAll("[" + s + "]", "");
+
+            int answerFromPartOne = part1();
+            if(shortestText > answerFromPartOne){
+                shortestText = answerFromPartOne;
+            }
+        }
+        return shortestText;
     }
 
 }
