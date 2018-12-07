@@ -20,9 +20,9 @@ public class Solution_Day_3 {
             int wide = Integer.parseInt(data.substring(data.indexOf(":") + 1, data.indexOf("x")).trim());
             int tall = Integer.parseInt(data.substring(data.indexOf("x") + 1).trim());
 
-            for(int i = leftEdge; i < leftEdge+wide; i++){
-                for(int j = topEdge; j < topEdge+tall; j++){
-                    setClaim(i, j);
+            for(int x = leftEdge; x < leftEdge+wide; x++){
+                for(int y = topEdge; y < topEdge+tall; y++){
+                    setClaim(x, y);
                 }
             }
         }
@@ -30,13 +30,13 @@ public class Solution_Day_3 {
         return result() + " square inches of fabric are within two or more claims!";
     }
 
-    public void setClaim(int longitude, int latitude){
+    public void setClaim(int x, int y){
         if(fabric.isEmpty()){
-            fabric.put(longitude+"."+latitude, 1);
-        }else if(fabric.containsKey(longitude+"."+latitude)){
-            fabric.replace(longitude+"."+latitude, 2);
+            fabric.put(x + "." + y, 1);
+        }else if(fabric.containsKey(x + "." + y)){
+            fabric.replace(x + "." + y, 2);
         }else{
-            fabric.put(longitude+"."+latitude, 1);
+            fabric.put(x + "." + y, 1);
 
         }
 

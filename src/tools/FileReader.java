@@ -13,7 +13,7 @@ public class FileReader {
         String sr = "";
 
         while (sc.hasNextLine()){
-            sr = sr + sc.nextLine();
+            sr = sr + sc.nextLine() + "\n";
         }
 
         return sr;

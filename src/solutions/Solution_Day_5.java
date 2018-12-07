@@ -11,6 +11,7 @@ public class Solution_Day_5 {
         FileReader fileReader = new FileReader();
         try {
             data = fileReader.readFile("input_day_5.txt");
+            data = data.replaceAll("\n", "");
 
         }catch(Exception e){
             e.printStackTrace();
