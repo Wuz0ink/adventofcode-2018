@@ -21,13 +21,6 @@ public class Solution_Day_6 {
             FileReader fileReader = new FileReader();
             String[] temp = fileReader.readFile("input_day_6.txt").split("\n");
 
-//            String t = "1, 1\n" +
-//                    "1, 6\n" +
-//                    "8, 3\n" +
-//                    "3, 4\n" +
-//                    "5, 5\n" +
-//                    "8, 9";
-//            String[] temp = t.split("\n");
 
             for(String s : temp){
                 coordinates.add(new Coordinate(Integer.parseInt(s.split(",")[0].trim()), Integer.parseInt(s.split(",")[1].trim()), true));
