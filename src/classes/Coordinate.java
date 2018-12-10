@@ -25,6 +25,10 @@ public class Coordinate {
         isPuzzleInputCoordinate = b;
     }
 
+    public boolean isPuzzleInputCoordinate() {
+        return isPuzzleInputCoordinate;
+    }
+
     public boolean isBoarder() {
         return isBoarder;
     }
@@ -64,13 +68,13 @@ public class Coordinate {
     @Override
     public String toString(){
         if(isPuzzleInputCoordinate){
-            return "#" + x + "," + y;
+            return x + "," + y;
         }else if(isBoarder){
-            return "##";
+            return "## ";
         }else if(claimedMoreThanOnce) {
-            return ".";
+            return " . ";
         }else{
-            return claimedBy.x + "," + claimedBy.y;
+            return x + "," + y;
         }
 
     }
