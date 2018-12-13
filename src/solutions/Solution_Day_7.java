@@ -1,6 +1,7 @@
 package solutions;
 
 import classes.Step;
+import classes.Worker;
 import tools.FileReader;
 
 import java.util.ArrayList;
@@ -73,9 +74,116 @@ public class Solution_Day_7 {
 
     public String part1(){
 
-
-
         return sort();
+    }
+
+    public int part2(){
+
+        List<Worker> workers = new ArrayList<>();
+        for(int i = 1; i < 6; i++)
+            workers.add(new Worker(i));
+
+        List<Step> stepsList = steps;
+        String done = "";
+        int secondsToReturn = 0;
+
+        ArrayList<Step> temporaryList;
+        System.out.print("Sek\t");
+
+        for(Worker w : workers){
+            System.out.print(w.getId() + "\t");
+        }
+
+        temporaryList = getTemporaryList(stepsList);
+
+        loop:
+        for(int second = 0; second < 5000; second++){
+            for(Worker w : workers){
+                w.setSecondCount();
+            }
+
+            for (Worker w : workers) {
+                if(w.isDone() && w.isOccupied()){
+                    Step t = w.getStep();
+                    w.removeStep();
+
+                    loopOne:
+                    for(int i = 0; i < temporaryList.size(); i++){
+                        if(t.getStep().equals(temporaryList.get(i).getStep())){
+                            temporaryList.remove(i);
+                            break loopOne;
+                        }
+                    }
+
+                    loopTwo:
+                    for(int i = 0; i < stepsList.size(); i++){
+                        if(t.getStep().equals(stepsList.get(i).getStep())){
+                            stepsList.remove(i);
+                            break loopTwo;
+                        }
+                    }
+
+                    done += t.getStep();
+                }
+            }
+
+            temporaryList = getTemporaryList(stepsList);
+            for(int i = 0; i < temporaryList.size(); i++){
+                innerLoop:
+                if(!temporaryList.get(i).isWorking()) {
+                    for (Worker w : workers) {
+                        if (!w.isOccupied()) {
+                            temporaryList.get(i).setWorking(true);
+                            w.startWorking(temporaryList.get(i));
+                            break innerLoop;
+                        }
+                    }
+                }
+            }
+
+            graphIt(second, workers, done);
+
+            if(stepsList.isEmpty()){
+                secondsToReturn = second;
+                break loop;
+            }
+        }
+        
+        System.out.println();
+        return secondsToReturn;
+    }
+
+    public void graphIt(int second, List<Worker> workers, String done){
+        System.out.println();
+        System.out.print(second + "\t");
+        for(Worker w : workers){
+            if(w.isOccupied()) {
+                System.out.print(w.getStep().getStep() + "\t");
+            }else{
+                System.out.print(".\t");
+            }
+        }
+        System.out.print("\t" + done);
+    }
+
+    public ArrayList<Step> getTemporaryList(List<Step> stepsList){
+        ArrayList <Step> temporaryList = new ArrayList<>();
+
+        for (Step temp : stepsList) {
+            Boolean contestant = true;
+            for (Step tempTwo : stepsList) {
+                for (Step s : tempTwo.getWhenDone()) {
+                    if (temp.equals(s)) {
+                        contestant = false;
+                        break;
+                    }
+                }
+            }
+            if (contestant) {
+                temporaryList.add(temp);
+            }
+        }
+        return temporaryList;
     }
 
     public String sort(){
@@ -85,30 +193,10 @@ public class Solution_Day_7 {
 
         for(int i = 0; i < count; i++) {
 
-            temporaryList = new ArrayList<>();
-
-            for (Step temp : steps) {
-                Boolean contestant = true;
-                for (Step tempTwo : steps) {
-                    for (Step s : tempTwo.getWhenDone()) {
-                        if (temp.equals(s)) {
-                            contestant = false;
-                            break;
-                        }
-                    }
-                }
-                if (contestant) {
-                    temporaryList.add(temp);
-                }
-            }
-
-//            for(Step s : temporaryList)
-//                System.out.print(s.getStep() + " : ");
+            temporaryList = getTemporaryList(steps);
 
             Step tempStep = temporaryList.get(0);
             if (temporaryList.size() > 1) {
-
-
                 for (Step first : temporaryList) {
                     for (Step second : temporaryList) {
                         if (order(first, second)) {
@@ -125,12 +213,6 @@ public class Solution_Day_7 {
                 toReturn = toReturn + tempStep.getStep().toString();
             }
 
-
-//            for (Step temp : tempStep.getWhenDone()) {
-//                if (temporaryList.indexOf(temp) == -1) {
-//                    temporaryList.add(temp);
-//                }
-//            }
             temporaryList.remove(tempStep);
             steps.remove(tempStep);
 

@@ -1,5 +1,8 @@
 import solutions.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -36,8 +39,14 @@ public class Main {
 //        System.out.println("Answer: " + day6.part1());
 //
 //        System.out.println("Answer: " + day6.part2());
+//
+//        System.out.println("Answer: " + day7.part1());
+//
+        System.out.println("Answer: " + day7.part2());
 
-        System.out.println("Answer: " + day7.part1());
+
+
+
 
 
 
