@@ -5,13 +5,14 @@ import tools.FileReader;
 
 import java.util.*;
 
-public class Solution_Day_6 {
+public class SolutionDay6 {
 
     private List<Coordinate> coordinates;
-    private Coordinate minCoordinate, maxCoordinate;
+    private Coordinate minCoordinate;
+    private Coordinate maxCoordinate;
     private HashMap<String, Coordinate> grid;
 
-    public Solution_Day_6(){
+    public SolutionDay6(){
         minCoordinate = new Coordinate(Integer.MAX_VALUE, Integer.MAX_VALUE);
         maxCoordinate = new Coordinate(Integer.MIN_VALUE, Integer.MIN_VALUE);
         coordinates = new ArrayList<>();

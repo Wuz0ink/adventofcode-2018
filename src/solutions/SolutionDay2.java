@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Solution_Day_2 {
+public class SolutionDay2 {
 
 
     public String part1(){

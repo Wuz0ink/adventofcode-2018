@@ -2,12 +2,12 @@ package solutions;
 
 import tools.FileReader;
 
-public class Solution_Day_5 {
+public class SolutionDay5 {
 
     private String data;
 
 
-    public Solution_Day_5(){
+    public SolutionDay5(){
         FileReader fileReader = new FileReader();
         try {
             data = fileReader.readFile("input_day_5.txt");
@@ -24,12 +24,9 @@ public class Solution_Day_5 {
                 char c2 = data.charAt(i + 1);
                 boolean b = Character.toLowerCase(c1) == Character.toLowerCase(c2);
 
-                if (b) {
-                    if (c1 != c2) {
-                        data = data.substring(0, i) + data.substring(i+2);
-                        i = -1;
-
-                    }
+                if (b && c1 != c2) {
+                    data = data.substring(0, i) + data.substring(i+2);
+                    i = -1;
                 }
             }
         return data.length();

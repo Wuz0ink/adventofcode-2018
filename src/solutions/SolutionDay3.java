@@ -2,23 +2,22 @@ package solutions;
 
 import java.util.*;
 
-public class Solution_Day_3 {
+public class SolutionDay3 {
 
     private HashMap<String, Integer> fabric;
-    private HashMap<Integer, String[]> claimsMap;
     private List<String> claimsToAnalyse;
 
-    public Solution_Day_3(){
-        claimsToAnalyse = new ArrayList<>(Arrays.asList(claims.split("\n")));
+    public SolutionDay3(){
+        claimsToAnalyse = new ArrayList<>(Arrays.asList(DATA.split("\n")));
         fabric = new HashMap<>();
     }
 
     public String part1(){
         for(String data : claimsToAnalyse) {
-            int leftEdge = Integer.parseInt(data.substring(data.indexOf("@") + 1, data.indexOf(",")).trim());
-            int topEdge = Integer.parseInt(data.substring(data.indexOf(",") + 1, data.indexOf(":")).trim());
-            int wide = Integer.parseInt(data.substring(data.indexOf(":") + 1, data.indexOf("x")).trim());
-            int tall = Integer.parseInt(data.substring(data.indexOf("x") + 1).trim());
+            int leftEdge = Integer.parseInt(data.substring(data.indexOf('@') + 1, data.indexOf(',')).trim());
+            int topEdge = Integer.parseInt(data.substring(data.indexOf(',') + 1, data.indexOf(':')).trim());
+            int wide = Integer.parseInt(data.substring(data.indexOf(':') + 1, data.indexOf('x')).trim());
+            int tall = Integer.parseInt(data.substring(data.indexOf('x') + 1).trim());
 
             for(int x = leftEdge; x < leftEdge+wide; x++){
                 for(int y = topEdge; y < topEdge+tall; y++){
@@ -46,8 +45,8 @@ public class Solution_Day_3 {
         Set set = fabric.entrySet();
         Iterator iterator = set.iterator();
         while(iterator.hasNext()){
-            Map.Entry claims = (Map.Entry)iterator.next();
-            if(claims.getValue().equals(2)){
+            Map.Entry tempClaims = (Map.Entry)iterator.next();
+            if(tempClaims.getValue().equals(2)){
                 inchesClaimedMoreThanOnce++;
             }
         }
@@ -55,10 +54,10 @@ public class Solution_Day_3 {
     }
 
     public String part2(){
-        claimsMap = new HashMap<>();
+        HashMap<Integer, String[]> claimsMap = new HashMap<>();
 
         for(String data: claimsToAnalyse){
-            claimsMap.put(Integer.parseInt(data.substring(data.indexOf("#") + 1, data.indexOf("@")).trim()), getCoordinates(data.substring(data.indexOf("@")+1)));
+            claimsMap.put(Integer.parseInt(data.substring(data.indexOf('#') + 1, data.indexOf('@')).trim()), getCoordinates(data.substring(data.indexOf('@')+1)));
         }
 
         Set set = claimsMap.entrySet();
@@ -66,10 +65,10 @@ public class Solution_Day_3 {
         int id = 0;
 
         while(iterator.hasNext()){
-            Map.Entry claims = (Map.Entry)iterator.next();
-            id = (Integer) claims.getKey();
+            Map.Entry tempClaims = (Map.Entry)iterator.next();
+            id = (Integer) tempClaims.getKey();
 
-            Boolean found = findTheOne((String[]) claims.getValue());
+            Boolean found = findTheOne((String[]) tempClaims.getValue());
             if(found){
                 break;
             }else{
@@ -97,10 +96,10 @@ public class Solution_Day_3 {
     }
 
     public String[] getCoordinates(String data){
-        int leftEdge = Integer.parseInt(data.substring(0, data.indexOf(",")).trim());
-        int topEdge = Integer.parseInt(data.substring(data.indexOf(",") + 1, data.indexOf(":")).trim());
-        int wide = Integer.parseInt(data.substring(data.indexOf(":") + 1, data.indexOf("x")).trim());
-        int tall = Integer.parseInt(data.substring(data.indexOf("x") + 1).trim());
+        int leftEdge = Integer.parseInt(data.substring(0, data.indexOf(',')).trim());
+        int topEdge = Integer.parseInt(data.substring(data.indexOf(',') + 1, data.indexOf(':')).trim());
+        int wide = Integer.parseInt(data.substring(data.indexOf(':') + 1, data.indexOf('x')).trim());
+        int tall = Integer.parseInt(data.substring(data.indexOf('x') + 1).trim());
 
         List<String> temp = new ArrayList<>();
         for(int i = leftEdge; i < leftEdge+wide; i++){
@@ -113,7 +112,7 @@ public class Solution_Day_3 {
     }
 
 
-    public static String claims = "#1 @ 596,731: 11x27\n" +
+    private static final String DATA = "#1 @ 596,731: 11x27\n" +
             "#2 @ 20,473: 23x22\n" +
             "#3 @ 730,802: 23x23\n" +
             "#4 @ 212,725: 28x25\n" +

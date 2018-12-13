@@ -6,26 +6,26 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class Solution_Day_4 {
+public class SolutionDay4 {
 
     private List<String> guardHabitsToAnalyse;
     private List<GuardEvents> guardEvents;
     private HashMap<Integer, Long> minutesGuardIsSleeping;
     SimpleDateFormat format;
 
-    public Solution_Day_4(){
+    public SolutionDay4(){
         guardEvents = new ArrayList<>();
-        guardHabitsToAnalyse = new ArrayList<>(Arrays.asList(data.split("\n")));
+        guardHabitsToAnalyse = new ArrayList<>(Arrays.asList(DATA.split("\n")));
         format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
         for(String s : guardHabitsToAnalyse){
             try{
                 GuardEvents guard = new GuardEvents();
 
-                String temp = s.substring(s.indexOf("[") + 1, s.indexOf("]"));
+                String temp = s.substring(s.indexOf('[') + 1, s.indexOf(']'));
                 guard.setDateTime(format.parse(temp));
 
-                temp = s.substring(s.lastIndexOf("]"));
+                temp = s.substring(s.lastIndexOf(']'));
 
                 if(temp.contains("#")){
                     guard.setId(Integer.parseInt(temp.replaceAll("[^0-9]","")));
@@ -102,15 +102,11 @@ public class Solution_Day_4 {
 
             String[] guardData = guardsMostSleptMinute(tempId).split(":");
 
-            if(guardData.length == 3) {
-                if (counter < Integer.parseInt(guardData[2])) {
+            if(guardData.length == 3 && counter < Integer.parseInt(guardData[2])) {
                     counter = Integer.parseInt(guardData[2]);
                     guardId = Integer.parseInt(guardData[0]);
                     minute = Integer.parseInt(guardData[1]);
-                }
             }
-
-
         }
 
 
@@ -118,11 +114,10 @@ public class Solution_Day_4 {
     }
 
     public String guardsMostSleptMinute(int guardId){
-
-        HashMap<String, Integer> countPerMinute = new HashMap<>();
+        Map<String, Integer> countPerMinute = new HashMap<>();
         Date fallsAsleep = null;
-
         int id = 0;
+
         for(GuardEvents guard : guardEvents){
             if(guard.getId() != 0){
                 id = guard.getId();
@@ -137,7 +132,6 @@ public class Solution_Day_4 {
                         format = new SimpleDateFormat("HH:mm");
                         String key = format.format(fallsAsleep);
 
-
                         countPerMinute.put(key, countPerMinute.getOrDefault(key, 0) + 1);
 
                         for(int i = 1; i < diffMinutes; i++){
@@ -146,13 +140,15 @@ public class Solution_Day_4 {
                             key = format.format(fallsAsleep);
 
                             countPerMinute.put(key, countPerMinute.getOrDefault(key, 0) + 1);
-
                         }
                     }
                 }
             }
         }
+        return findMinuteSleeptMost(guardId, countPerMinute);
+    }
 
+    public String findMinuteSleeptMost(int guardId, Map<String, Integer> countPerMinute){
         Set set = countPerMinute.entrySet();
         Iterator iterator = set.iterator();
         String minuteSleptMost = "";
@@ -166,29 +162,28 @@ public class Solution_Day_4 {
 
             }
         }
-
-        return guardId + ":" + minuteSleptMost.substring(minuteSleptMost.indexOf(":") + 1) + ":" + counter;
+        return guardId + ":" + minuteSleptMost.substring(minuteSleptMost.indexOf(':') + 1) + ":" + counter;
     }
 
-    public static String data1 = "[1518-11-01 00:00] Guard #10 begins shift\n" +
-            "[1518-11-01 00:05] falls asleep\n" +
-            "[1518-11-01 00:25] wakes up\n" +
-            "[1518-11-01 00:30] falls asleep\n" +
-            "[1518-11-01 00:55] wakes up\n" +
-            "[1518-11-01 23:58] Guard #99 begins shift\n" +
-            "[1518-11-02 00:40] falls asleep\n" +
-            "[1518-11-02 00:50] wakes up\n" +
-            "[1518-11-03 00:05] Guard #10 begins shift\n" +
-            "[1518-11-03 00:24] falls asleep\n" +
-            "[1518-11-03 00:29] wakes up\n" +
-            "[1518-11-04 00:02] Guard #99 begins shift\n" +
-            "[1518-11-04 00:36] falls asleep\n" +
-            "[1518-11-04 00:46] wakes up\n" +
-            "[1518-11-05 00:03] Guard #99 begins shift\n" +
-            "[1518-11-05 00:45] falls asleep\n" +
-            "[1518-11-05 00:55] wakes up";
+//    private static final String DATA = "[1518-11-01 00:00] Guard #10 begins shift\n" +
+//            "[1518-11-01 00:05] falls asleep\n" +
+//            "[1518-11-01 00:25] wakes up\n" +
+//            "[1518-11-01 00:30] falls asleep\n" +
+//            "[1518-11-01 00:55] wakes up\n" +
+//            "[1518-11-01 23:58] Guard #99 begins shift\n" +
+//            "[1518-11-02 00:40] falls asleep\n" +
+//            "[1518-11-02 00:50] wakes up\n" +
+//            "[1518-11-03 00:05] Guard #10 begins shift\n" +
+//            "[1518-11-03 00:24] falls asleep\n" +
+//            "[1518-11-03 00:29] wakes up\n" +
+//            "[1518-11-04 00:02] Guard #99 begins shift\n" +
+//            "[1518-11-04 00:36] falls asleep\n" +
+//            "[1518-11-04 00:46] wakes up\n" +
+//            "[1518-11-05 00:03] Guard #99 begins shift\n" +
+//            "[1518-11-05 00:45] falls asleep\n" +
+//            "[1518-11-05 00:55] wakes up";
 
-    public static String data = "[1518-05-11 00:47] wakes up\n" +
+    private static final String DATA = "[1518-05-11 00:47] wakes up\n" +
             "[1518-07-13 00:59] wakes up\n" +
             "[1518-06-16 00:49] falls asleep\n" +
             "[1518-08-17 00:01] Guard #3529 begins shift\n" +

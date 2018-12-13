@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Solution_Day_1 {
+public class SolutionDay1 {
 
 
 
 
     public String part1(){
         int number = 0;
-        List<String> numbersToAnalyse = new ArrayList<>(Arrays.asList(numbers.split("\n")));
+        List<String> numbersToAnalyse = new ArrayList<>(Arrays.asList(DATA.split("\n")));
 
         for(String s : numbersToAnalyse){
             int currentNumber = Integer.parseInt(s);
@@ -30,7 +30,7 @@ public class Solution_Day_1 {
         List<Integer> frequency = new ArrayList<>();
         frequency.add(0);
         int dublicateNumber;
-        List<String> numbersToAnalyse = new ArrayList<>(Arrays.asList(numbers.split("\n")));
+        List<String> numbersToAnalyse = new ArrayList<>(Arrays.asList(DATA.split("\n")));
 
         outerloop:
         while(true) {
@@ -55,12 +55,10 @@ public class Solution_Day_1 {
         }
 
         return "The first dublicate is: " + dublicateNumber;
-
-
     }
 
 
-    static String numbers = "+7\n" +
+    private static final String DATA = "+7\n" +
             "-5\n" +
             "-9\n" +
             "-1\n" +
