@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SolutionDay2 {
+public class SolutionDayTwo {
 
 
-    public String part1(){
+    public String partOne(){
         List<String> idsToAnalyse = new ArrayList<>(Arrays.asList(boxId.split("\n")));
         int twoTimer = 0;
         int threeTimer = 0;
@@ -41,7 +41,7 @@ public class SolutionDay2 {
         return "Two: " + twoTimer + " * Three: " + threeTimer + " = " + twoTimer * threeTimer;
     }
 
-    public String part2(){
+    public String partTwo(){
         List<String> idsToAnalyse = new ArrayList<>(Arrays.asList(boxId.split("\n")));
         String answer = "";
 

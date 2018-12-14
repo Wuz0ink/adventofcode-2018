@@ -6,14 +6,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class SolutionDay4 {
+public class SolutionDayFour {
 
     private List<String> guardHabitsToAnalyse;
     private List<GuardEvents> guardEvents;
     private HashMap<Integer, Long> minutesGuardIsSleeping;
     SimpleDateFormat format;
 
-    public SolutionDay4(){
+    public SolutionDayFour(){
         guardEvents = new ArrayList<>();
         guardHabitsToAnalyse = new ArrayList<>(Arrays.asList(DATA.split("\n")));
         format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -43,7 +43,7 @@ public class SolutionDay4 {
         Collections.sort(guardEvents);
     }
 
-    public String part1(){
+    public String partOne(){
 
         minutesGuardIsSleeping = new HashMap<>();
         int id = 0;
@@ -86,7 +86,7 @@ public class SolutionDay4 {
     }
 
 
-    public String part2(){
+    public String partTwo(){
 
         int guardId = 0;
         int minute = 0;

@@ -2,17 +2,17 @@ package solutions;
 
 import java.util.*;
 
-public class SolutionDay3 {
+public class SolutionDayThree {
 
     private HashMap<String, Integer> fabric;
     private List<String> claimsToAnalyse;
 
-    public SolutionDay3(){
+    public SolutionDayThree(){
         claimsToAnalyse = new ArrayList<>(Arrays.asList(DATA.split("\n")));
         fabric = new HashMap<>();
     }
 
-    public String part1(){
+    public String partOne(){
         for(String data : claimsToAnalyse) {
             int leftEdge = Integer.parseInt(data.substring(data.indexOf('@') + 1, data.indexOf(',')).trim());
             int topEdge = Integer.parseInt(data.substring(data.indexOf(',') + 1, data.indexOf(':')).trim());
@@ -53,7 +53,7 @@ public class SolutionDay3 {
         return inchesClaimedMoreThanOnce;
     }
 
-    public String part2(){
+    public String partTwo(){
         HashMap<Integer, String[]> claimsMap = new HashMap<>();
 
         for(String data: claimsToAnalyse){

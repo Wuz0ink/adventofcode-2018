@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SolutionDay7 {
+public class SolutionDaySeven {
 
     private List<Step> steps;
 
-    public SolutionDay7(){
+    public SolutionDaySeven(){
         fillList(readFile());
     }
 
@@ -69,11 +69,11 @@ public class SolutionDay7 {
         }
     }
 
-    public String part1(){
+    public String partOne(){
         return sort();
     }
 
-    public int part2(){
+    public int partTwo(){
         fillList(readFile());
         return runJob();
     }

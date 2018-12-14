@@ -2,12 +2,12 @@ package solutions;
 
 import tools.FileReader;
 
-public class SolutionDay5 {
+public class SolutionDayFive {
 
     private String data;
 
 
-    public SolutionDay5(){
+    public SolutionDayFive(){
         FileReader fileReader = new FileReader();
         try {
             data = fileReader.readFile("input_day_5.txt");
@@ -18,7 +18,7 @@ public class SolutionDay5 {
         }
     }
 
-    public int part1(){
+    public int partOne(){
             for (int i = 0; i < data.length() - 1; i++) {
                 char c1 = data.charAt(i);
                 char c2 = data.charAt(i + 1);
@@ -32,7 +32,7 @@ public class SolutionDay5 {
         return data.length();
     }
 
-    public int part2(){
+    public int partTwo(){
 
         String temp = "Aa:Bb:Cc:Dd:Ee:Ff:Gg:Hh:Ii:Jj:Kk:Ll:Mm:Nn:Oo:Pp:Qq:Rr:Ss:Tt:Uu:Vv:Ww:Xx:Yy:Zz";
         String[] alphabet = temp.split(":");
@@ -45,7 +45,7 @@ public class SolutionDay5 {
             data = originData;
             data = data.replaceAll("[" + s + "]", "");
 
-            int answerFromPartOne = part1();
+            int answerFromPartOne = partOne();
             if(shortestText > answerFromPartOne){
                 shortestText = answerFromPartOne;
             }

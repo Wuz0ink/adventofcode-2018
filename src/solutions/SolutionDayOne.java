@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SolutionDay1 {
+public class SolutionDayOne {
 
 
 
 
-    public String part1(){
+    public String partOne(){
         int number = 0;
         List<String> numbersToAnalyse = new ArrayList<>(Arrays.asList(DATA.split("\n")));
 
@@ -25,7 +25,7 @@ public class SolutionDay1 {
         return "The answer is: " + number;
     }
 
-    public String part2(){
+    public String partTwo(){
         int number = 0;
         List<Integer> frequency = new ArrayList<>();
         frequency.add(0);

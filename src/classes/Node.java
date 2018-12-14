@@ -21,9 +21,26 @@ public class Node {
         for(int i : metadata){
             value += i;
         }
-        if(childNodes.size() != 0){
+        if(!childNodes.isEmpty()){
             for(Node node : childNodes){
                 value += node.getValueOfMetadata();
+            }
+        }
+        return value;
+    }
+
+    public int getValueOfNode(){
+        int value = 0;
+        if(childNodes.isEmpty()){
+            value = getValueOfMetadata();
+        }else{
+            for(int i : metadata){
+                if(i != 0){
+                    i--;
+                    if(i < childNodes.size()){
+                        value += childNodes.get(i).getValueOfNode();
+                    }
+                }
             }
         }
         return value;
